@@ -4,6 +4,15 @@ controltower_Hello:
   synopsis: get started using &CTower;.
   category: Hello
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description:
+              snippet_tags:
+                - controltower.java2.hello.main
     Python:
       versions:
         - sdk_version: 3
@@ -25,6 +34,15 @@ controltower_Hello:
 
 controltower_ListBaselines:
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description:
+              snippet_tags:
+                - controltower.java2.list_baselines.main
     Python:
       versions:
         - sdk_version: 3
@@ -42,11 +60,28 @@ controltower_ListBaselines:
             - description:
               snippet_tags:
                 - ControlTower.dotnetv4.ListBaselines
+    SAP ABAP:
+      versions:
+        - sdk_version: 1
+          github: sap-abap/services/ctt
+          excerpts:
+            - description:
+              snippet_tags:
+                - ctt.abapv1.list_baselines
   services:
     controltower: {ListBaselines}
 
 controltower_ListEnabledBaselines:
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description:
+              snippet_tags:
+                - controltower.java2.list_enabled_baselines.main
     Python:
       versions:
         - sdk_version: 3
@@ -64,11 +99,28 @@ controltower_ListEnabledBaselines:
             - description:
               snippet_tags:
                 - ControlTower.dotnetv4.ListEnabledBaselines
+    SAP ABAP:
+      versions:
+        - sdk_version: 1
+          github: sap-abap/services/ctt
+          excerpts:
+            - description:
+              snippet_tags:
+                - ctt.abapv1.list_enabled_baselines
   services:
     controltower: {ListEnabledBaselines}
 
 controltower_EnableBaseline:
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description:
+              snippet_tags:
+                - controltower.java2.enable_baseline.main
     Python:
       versions:
         - sdk_version: 3
@@ -86,11 +138,28 @@ controltower_EnableBaseline:
             - description:
               snippet_tags:
                 - ControlTower.dotnetv4.EnableBaseline
+    SAP ABAP:
+      versions:
+        - sdk_version: 1
+          github: sap-abap/services/ctt
+          excerpts:
+            - description:
+              snippet_tags:
+                - ctt.abapv1.enable_baseline
   services:
     controltower: {EnableBaseline}
 
 controltower_ResetEnabledBaseline:
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description:
+              snippet_tags:
+                - controltower.java2.reset_enabled_baseline.main
     Python:
       versions:
         - sdk_version: 3
@@ -108,11 +177,28 @@ controltower_ResetEnabledBaseline:
             - description:
               snippet_tags:
                 - ControlTower.dotnetv4.ResetEnabledBaseline
+    SAP ABAP:
+      versions:
+        - sdk_version: 1
+          github: sap-abap/services/ctt
+          excerpts:
+            - description:
+              snippet_tags:
+                - ctt.abapv1.reset_enabled_baseline
   services:
     controltower: {ResetEnabledBaseline}
 
 controltower_DisableBaseline:
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description:
+              snippet_tags:
+                - controltower.java2.disable_baseline.main
     Python:
       versions:
         - sdk_version: 3
@@ -130,11 +216,28 @@ controltower_DisableBaseline:
             - description:
               snippet_tags:
                 - ControlTower.dotnetv4.DisableBaseline
+    SAP ABAP:
+      versions:
+        - sdk_version: 1
+          github: sap-abap/services/ctt
+          excerpts:
+            - description:
+              snippet_tags:
+                - ctt.abapv1.disable_baseline
   services:
     controltower: {DisableBaseline}
 
 controltower_ListEnabledControls:
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description:
+              snippet_tags:
+                - controltower.java2.list_enabled_controls.main
     Python:
       versions:
         - sdk_version: 3
@@ -152,11 +255,28 @@ controltower_ListEnabledControls:
             - description:
               snippet_tags:
                 - ControlTower.dotnetv4.ListEnabledControls
+    SAP ABAP:
+      versions:
+        - sdk_version: 1
+          github: sap-abap/services/ctt
+          excerpts:
+            - description:
+              snippet_tags:
+                - ctt.abapv1.list_enabled_controls
   services:
     controltower: {ListEnabledControls}
 
 controltower_EnableControl:
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description:
+              snippet_tags:
+                - controltower.java2.enable_control.main
     Python:
       versions:
         - sdk_version: 3
@@ -174,11 +294,28 @@ controltower_EnableControl:
             - description:
               snippet_tags:
                 - ControlTower.dotnetv4.EnableControl
+    SAP ABAP:
+      versions:
+        - sdk_version: 1
+          github: sap-abap/services/ctt
+          excerpts:
+            - description:
+              snippet_tags:
+                - ctt.abapv1.enable_control
   services:
     controltower: {EnableControl}
 
 controltower_GetControlOperation:
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description:
+              snippet_tags:
+                - controltower.java2.get_control_operation.main
     Python:
       versions:
         - sdk_version: 3
@@ -196,11 +333,28 @@ controltower_GetControlOperation:
             - description:
               snippet_tags:
                 - ControlTower.dotnetv4.GetControlOperation
+    SAP ABAP:
+      versions:
+        - sdk_version: 1
+          github: sap-abap/services/ctt
+          excerpts:
+            - description:
+              snippet_tags:
+                - ctt.abapv1.get_control_operation
   services:
     controltower: {GetControlOperation}
 
 controltower_DisableControl:
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description:
+              snippet_tags:
+                - controltower.java2.disable_control.main
     Python:
       versions:
         - sdk_version: 3
@@ -218,11 +372,28 @@ controltower_DisableControl:
             - description:
               snippet_tags:
                 - ControlTower.dotnetv4.DisableControl
+    SAP ABAP:
+      versions:
+        - sdk_version: 1
+          github: sap-abap/services/ctt
+          excerpts:
+            - description:
+              snippet_tags:
+                - ctt.abapv1.disable_control
   services:
     controltower: {DisableControl}
 
 controltower_ListLandingZones:
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description:
+              snippet_tags:
+                - controltower.java2.list_landing_zones.main
     Python:
       versions:
         - sdk_version: 3
@@ -240,11 +411,28 @@ controltower_ListLandingZones:
             - description:
               snippet_tags:
                 - ControlTower.dotnetv4.ListLandingZones
+    SAP ABAP:
+      versions:
+        - sdk_version: 1
+          github: sap-abap/services/ctt
+          excerpts:
+            - description:
+              snippet_tags:
+                - ctt.abapv1.list_landing_zones
   services:
     controltower: {ListLandingZones}
 
 controltower_GetBaselineOperation:
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description:
+              snippet_tags:
+                - controltower.java2.get_baseline_operation.main
     Python:
       versions:
         - sdk_version: 3
@@ -262,6 +450,14 @@ controltower_GetBaselineOperation:
             - description:
               snippet_tags:
                 - ControlTower.dotnetv4.GetBaselineOperation
+    SAP ABAP:
+      versions:
+        - sdk_version: 1
+          github: sap-abap/services/ctt
+          excerpts:
+            - description:
+              snippet_tags:
+                - ctt.abapv1.get_baseline_operation
   services:
     controltower: {GetBaselineOperation}
 
@@ -272,6 +468,16 @@ controltower_Scenario:
     - List, enable, get, and disable controls.
   category: Basics
   languages:
+    Java:
+      versions:
+        - sdk_version: 2
+          github: javav2/example_code/controltower
+          sdkguide:
+          excerpts:
+            - description: Run an interactive scenario demonstrating &CTowerlong; features.
+              snippet_tags:
+                - controltower.java2.controltower_scenario.main
+                - controltower.java2.controltower_actions.main
     Python:
       versions:
         - sdk_version: 3

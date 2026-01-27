@@ -33,19 +33,22 @@ For prerequisites, see the [README](../../README.md#Prerequisites) in the `sap-a
 
 Code excerpts that show you how to call individual service functions.
 
-- [DeleteAlarms](#awsex#cl_cwt_actions.clas.abap#L71)
-- [DescribeAlarms](#awsex#cl_cwt_actions.clas.abap#L91)
-- [DisableAlarmActions](#awsex#cl_cwt_actions.clas.abap#L112)
-- [EnableAlarmActions](#awsex#cl_cwt_actions.clas.abap#L135)
-- [ListMetrics](#awsex#cl_cwt_actions.clas.abap#L158)
-- [PutMetricAlarm](#awsex#cl_cwt_actions.clas.abap#L180)
+- [DeleteAlarms](%23awsex%23cl_cwt_actions.clas.abap#L113)
+- [DescribeAlarms](%23awsex%23cl_cwt_actions.clas.abap#L133)
+- [DescribeAlarmsForMetric](%23awsex%23cl_cwt_actions.clas.abap#L345)
+- [DisableAlarmActions](%23awsex%23cl_cwt_actions.clas.abap#L154)
+- [EnableAlarmActions](%23awsex%23cl_cwt_actions.clas.abap#L177)
+- [GetMetricStatistics](%23awsex%23cl_cwt_actions.clas.abap#L319)
+- [ListMetrics](%23awsex%23cl_cwt_actions.clas.abap#L200)
+- [PutMetricAlarm](%23awsex%23cl_cwt_actions.clas.abap#L222)
+- [PutMetricData](%23awsex%23cl_cwt_actions.clas.abap#L253)
 
 ### Scenarios
 
 Code examples that show you how to accomplish a specific task by calling multiple
 functions within the same service.
 
-- [Get started with alarms](#awsex#cl_cwt_scenarios.clas.abap)
+- [Get started with alarms](%23awsex%23cl_cwt_scenarios.clas.abap)
 
 
 <!--custom.examples.start-->
