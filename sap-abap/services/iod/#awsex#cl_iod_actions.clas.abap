@@ -15,11 +15,23 @@ CLASS /awsex/cl_iod_actions IMPLEMENTATION.
     CONSTANTS cv_pfl TYPE /aws1/rt_profile_id VALUE 'ZCODE_DEMO'.
     DATA(lo_session) = /aws1/cl_rt_session_aws=>create( cv_pfl ).
     DATA(lo_iod) = /aws1/cl_iod_factory=>create( lo_session ).
+    " snippet-start:[iod.abapv1.get_thing_shadow]
     TRY.
         oo_result = lo_iod->getthingshadow( iv_thingname = iv_thing_name iv_shadowname = iv_shadow_name ).
         MESSAGE 'Retrieved thing shadow successfully.' TYPE 'I'.
       CATCH /aws1/cx_iodresourcenotfound.
         MESSAGE 'Thing or shadow not found.' TYPE 'E'.
+      CATCH /aws1/cx_iodinternalfailureex.
+        MESSAGE 'Internal service error occurred.' TYPE 'E'.
+      CATCH /aws1/cx_iodinvalidrequestex.
+        MESSAGE 'Invalid request parameters.' TYPE 'E'.
+      CATCH /aws1/cx_iodthrottlingexception.
+        MESSAGE 'Request throttled - rate limit exceeded.' TYPE 'E'.
+      CATCH /aws1/cx_iodunauthorizedex.
+        MESSAGE 'Unauthorized access.' TYPE 'E'.
+      CATCH /aws1/cx_iodserviceunavailex.
+        MESSAGE 'Service temporarily unavailable.' TYPE 'E'.
     ENDTRY.
+    " snippet-end:[iod.abapv1.get_thing_shadow]
   ENDMETHOD.
 ENDCLASS.
