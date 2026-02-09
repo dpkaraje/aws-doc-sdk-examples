@@ -141,7 +141,7 @@ CLASS ltc_awsex_cl_s3c_actions IMPLEMENTATION.
     " Create role
     DATA(lo_role) = ao_iam->createrole(
       iv_rolename = av_role_name
-      iv_assumerolepolicydoc = lv_trust_policy
+      iv_assumerolepolicydocument = lv_trust_policy
       iv_description = 'Role for S3 Batch Operations test' ).
     av_role_arn = lo_role->get_role( )->get_arn( ).
 
