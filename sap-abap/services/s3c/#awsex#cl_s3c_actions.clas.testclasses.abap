@@ -1,4 +1,5 @@
 " Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+" Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 " SPDX-License-Identifier: Apache-2.0
 CLASS ltc_awsex_cl_s3c_actions DEFINITION DEFERRED.
 CLASS /awsex/cl_s3c_actions DEFINITION LOCAL FRIENDS ltc_awsex_cl_s3c_actions.
@@ -128,14 +129,14 @@ CLASS ltc_awsex_cl_s3c_actions IMPLEMENTATION.
     av_role_name = |S3BatchRole{ lv_uuid(18) }|.
     
     " Trust policy for S3 Batch Operations
-    DATA(lv_trust_policy) = |{| &&
-      |"Version":"2012-10-17",| &&
-      |"Statement":[{| &&
-      |"Effect":"Allow",| &&
-      |"Principal":\{"Service":"batchoperations.s3.amazonaws.com"\},| &&
-      |"Action":"sts:AssumeRole"| &&
-      |}]| &&
-      |}|.
+    DATA(lv_trust_policy) = '{ ' &&
+      '"Version":"2012-10-17",' &&
+      '"Statement":[{ ' &&
+      '"Effect":"Allow",' &&
+      '"Principal":{"Service":"batchoperations.s3.amazonaws.com"},' &&
+      '"Action":"sts:AssumeRole"' &&
+      '}]' &&
+      '}'.
 
     " Create role
     DATA(lo_role) = ao_iam->createrole(
@@ -152,26 +153,26 @@ CLASS ltc_awsex_cl_s3c_actions IMPLEMENTATION.
       it_tags = lt_role_tags ).
 
     " Create and attach comprehensive policy for S3 Batch Operations
-    DATA(lv_policy_doc) = |{| &&
-      |"Version":"2012-10-17",| &&
-      |"Statement":[| &&
-      |{| &&
-      |"Effect":"Allow",| &&
-      |"Action":["s3:GetObject","s3:GetObjectVersion","s3:PutObject",| &&
-      |"s3:PutObjectTagging","s3:GetObjectTagging","s3:PutObjectVersionTagging",| &&
-      |"s3:GetObjectVersionTagging","s3:DeleteObjectTagging","s3:DeleteObjectVersionTagging"],| &&
-      |"Resource":"arn:aws:s3:::{ av_bucket_name }/*"| &&
-      |},{| &&
-      |"Effect":"Allow",| &&
-      |"Action":["s3:GetBucketLocation","s3:ListBucket","s3:ListBucketVersions",| &&
-      |"s3:GetBucketTagging","s3:PutBucketTagging"],| &&
-      |"Resource":"arn:aws:s3:::{ av_bucket_name }"| &&
-      |},{| &&
-      |"Effect":"Allow",| &&
-      |"Action":["s3:PutObject","s3:GetObject"],| &&
-      |"Resource":"arn:aws:s3:::{ av_bucket_name }/batch-op-reports/*"| &&
-      |}]| &&
-      |}|.
+    DATA(lv_policy_doc) = '{ ' &&
+      '"Version":"2012-10-17",' &&
+      '"Statement":[' &&
+      '{ ' &&
+      '"Effect":"Allow",' &&
+      '"Action":["s3:GetObject","s3:GetObjectVersion","s3:PutObject",' &&
+      '"s3:PutObjectTagging","s3:GetObjectTagging","s3:PutObjectVersionTagging",' &&
+      '"s3:GetObjectVersionTagging","s3:DeleteObjectTagging","s3:DeleteObjectVersionTagging"],' &&
+      '"Resource":"arn:aws:s3:::' && av_bucket_name && '/*"' &&
+      '},{ ' &&
+      '"Effect":"Allow",' &&
+      '"Action":["s3:GetBucketLocation","s3:ListBucket","s3:ListBucketVersions",' &&
+      '"s3:GetBucketTagging","s3:PutBucketTagging"],' &&
+      '"Resource":"arn:aws:s3:::' && av_bucket_name && '"' &&
+      '},{ ' &&
+      '"Effect":"Allow",' &&
+      '"Action":["s3:PutObject","s3:GetObject"],' &&
+      '"Resource":"arn:aws:s3:::' && av_bucket_name && '/batch-op-reports/*"' &&
+      '}]' &&
+      '}'.
 
     DATA lv_policy_uuid TYPE sysuuid_c32.
     TRY.
