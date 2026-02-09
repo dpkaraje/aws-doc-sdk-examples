@@ -314,8 +314,8 @@ CLASS ltc_awsex_cl_emr_actions IMPLEMENTATION.
       it_applications = lt_applications
       iv_job_flow_role = av_ec2_role_name
       iv_service_role = av_emr_role_arn
-      iv_primary_sec_grp = av_primary_sg_id
-      iv_secondary_sec_grp = av_secondary_sg_id
+      iv_master_sec_grp = av_primary_sg_id
+      iv_slave_sec_grp = av_secondary_sg_id
       it_steps = lt_steps
     ).
 
