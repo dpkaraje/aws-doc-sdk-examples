@@ -1,15 +1,12 @@
 " Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 " SPDX-License-Identifier: Apache-2.0
 
-" This class provides examples for AWS IoT Data Plane operations
-
 CLASS /awsex/cl_iod_actions DEFINITION
   PUBLIC
   FINAL
   CREATE PUBLIC .
 
   PUBLIC SECTION.
-    " Method to retrieve the shadow state document for a thing
 
     METHODS get_thing_shadow
       IMPORTING
@@ -28,8 +25,8 @@ ENDCLASS.
 
 CLASS /awsex/cl_iod_actions IMPLEMENTATION.
 
+
   METHOD get_thing_shadow.
-    " Create AWS session and IoT Data client
     CONSTANTS cv_pfl TYPE /aws1/rt_profile_id VALUE 'ZCODE_DEMO'.
 
     DATA(lo_session) = /aws1/cl_rt_session_aws=>create( cv_pfl ).
@@ -37,7 +34,6 @@ CLASS /awsex/cl_iod_actions IMPLEMENTATION.
 
     " snippet-start:[iod.abapv1.get_thing_shadow]
     TRY.
-        " Retrieve the shadow document for the specified thing
         oo_result = lo_iod->getthingshadow(
           iv_thingname = iv_thing_name
           iv_shadowname = iv_shadow_name
