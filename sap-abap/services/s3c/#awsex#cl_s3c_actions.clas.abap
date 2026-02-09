@@ -127,18 +127,14 @@ CLASS /AWSEX/CL_S3C_ACTIONS IMPLEMENTATION.
         
         DATA(lv_job_id) = oo_result->get_jobid( ).
         MESSAGE |The Job id is { lv_job_id }| TYPE 'I'.
-      CATCH /aws1/cx_s3cbadrequestex INTO DATA(lo_bad_req).
-        DATA(lv_error) = lo_bad_req->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3cidempotencyex INTO DATA(lo_idemp).
-        lv_error = lo_idemp->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3cinternalserviceex INTO DATA(lo_internal).
-        lv_error = lo_internal->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3ctoomanyrequestsex INTO DATA(lo_too_many).
-        lv_error = lo_too_many->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
+      CATCH /aws1/cx_s3cbadrequestex.
+        MESSAGE 'Bad request - invalid parameters provided.' TYPE 'E'.
+      CATCH /aws1/cx_s3cidempotencyex.
+        MESSAGE 'Idempotency error - duplicate request detected.' TYPE 'E'.
+      CATCH /aws1/cx_s3cinternalserviceex.
+        MESSAGE 'Internal service error occurred.' TYPE 'E'.
+      CATCH /aws1/cx_s3ctoomanyrequestsex.
+        MESSAGE 'Too many requests - rate limit exceeded.' TYPE 'E'.
     ENDTRY.
     " snippet-end:[s3c.abapv1.create_job]
   ENDMETHOD.
@@ -184,18 +180,14 @@ CLASS /AWSEX/CL_S3C_ACTIONS IMPLEMENTATION.
         ELSE.
           MESSAGE |Job is in '{ lv_current_status }' state - priority update not allowed| TYPE 'I'.
         ENDIF.
-      CATCH /aws1/cx_s3cbadrequestex INTO DATA(lo_bad_req).
-        DATA(lv_error) = lo_bad_req->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'I'.
-      CATCH /aws1/cx_s3cinternalserviceex INTO DATA(lo_internal).
-        lv_error = lo_internal->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'I'.
-      CATCH /aws1/cx_s3cnotfoundexception INTO DATA(lo_not_found).
-        lv_error = lo_not_found->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'I'.
-      CATCH /aws1/cx_s3ctoomanyrequestsex INTO DATA(lo_too_many).
-        lv_error = lo_too_many->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'I'.
+      CATCH /aws1/cx_s3cbadrequestex.
+        MESSAGE 'Bad request - invalid parameters provided.' TYPE 'I'.
+      CATCH /aws1/cx_s3cinternalserviceex.
+        MESSAGE 'Internal service error occurred.' TYPE 'I'.
+      CATCH /aws1/cx_s3cnotfoundexception.
+        MESSAGE 'Job not found.' TYPE 'I'.
+      CATCH /aws1/cx_s3ctoomanyrequestsex.
+        MESSAGE 'Too many requests - rate limit exceeded.' TYPE 'I'.
     ENDTRY.
     " snippet-end:[s3c.abapv1.update_job_priority]
   ENDMETHOD.
@@ -230,21 +222,16 @@ CLASS /AWSEX/CL_S3C_ACTIONS IMPLEMENTATION.
         ELSE.
           MESSAGE |Job is in '{ lv_current_status }' state - cancel not allowed| TYPE 'I'.
         ENDIF.
-      CATCH /aws1/cx_s3cbadrequestex INTO DATA(lo_bad_req).
-        DATA(lv_error) = lo_bad_req->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3cinternalserviceex INTO DATA(lo_internal).
-        lv_error = lo_internal->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3cjobstatusexception INTO DATA(lo_job_status).
-        lv_error = lo_job_status->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3cnotfoundexception INTO DATA(lo_not_found).
-        lv_error = lo_not_found->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3ctoomanyrequestsex INTO DATA(lo_too_many).
-        lv_error = lo_too_many->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
+      CATCH /aws1/cx_s3cbadrequestex.
+        MESSAGE 'Bad request - invalid parameters provided.' TYPE 'E'.
+      CATCH /aws1/cx_s3cinternalserviceex.
+        MESSAGE 'Internal service error occurred.' TYPE 'E'.
+      CATCH /aws1/cx_s3cjobstatusexception.
+        MESSAGE 'Job status error - invalid state transition.' TYPE 'E'.
+      CATCH /aws1/cx_s3cnotfoundexception.
+        MESSAGE 'Job not found.' TYPE 'E'.
+      CATCH /aws1/cx_s3ctoomanyrequestsex.
+        MESSAGE 'Too many requests - rate limit exceeded.' TYPE 'E'.
     ENDTRY.
     " snippet-end:[s3c.abapv1.update_job_status]
   ENDMETHOD.
@@ -278,18 +265,14 @@ CLASS /AWSEX/CL_S3C_ACTIONS IMPLEMENTATION.
           lv_message = |{ lv_message }, Total: { lv_total }, Succeeded: { lv_succeeded }, Failed: { lv_failed }|.
         ENDIF.
         MESSAGE lv_message TYPE 'I'.
-      CATCH /aws1/cx_s3cbadrequestex INTO DATA(lo_bad_req).
-        DATA(lv_error) = lo_bad_req->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3cinternalserviceex INTO DATA(lo_internal).
-        lv_error = lo_internal->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3cnotfoundexception INTO DATA(lo_not_found).
-        lv_error = lo_not_found->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3ctoomanyrequestsex INTO DATA(lo_too_many).
-        lv_error = lo_too_many->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
+      CATCH /aws1/cx_s3cbadrequestex.
+        MESSAGE 'Bad request - invalid parameters provided.' TYPE 'E'.
+      CATCH /aws1/cx_s3cinternalserviceex.
+        MESSAGE 'Internal service error occurred.' TYPE 'E'.
+      CATCH /aws1/cx_s3cnotfoundexception.
+        MESSAGE 'Job not found.' TYPE 'E'.
+      CATCH /aws1/cx_s3ctoomanyrequestsex.
+        MESSAGE 'Too many requests - rate limit exceeded.' TYPE 'E'.
     ENDTRY.
     " snippet-end:[s3c.abapv1.describe_job]
   ENDMETHOD.
@@ -313,15 +296,12 @@ CLASS /AWSEX/CL_S3C_ACTIONS IMPLEMENTATION.
         ELSE.
           MESSAGE |No tags found for job ID: { iv_job_id }| TYPE 'I'.
         ENDIF.
-      CATCH /aws1/cx_s3cinternalserviceex INTO DATA(lo_internal).
-        DATA(lv_error) = lo_internal->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3cnotfoundexception INTO DATA(lo_not_found).
-        lv_error = lo_not_found->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3ctoomanyrequestsex INTO DATA(lo_too_many).
-        lv_error = lo_too_many->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
+      CATCH /aws1/cx_s3cinternalserviceex.
+        MESSAGE 'Internal service error occurred.' TYPE 'E'.
+      CATCH /aws1/cx_s3cnotfoundexception.
+        MESSAGE 'Job not found.' TYPE 'E'.
+      CATCH /aws1/cx_s3ctoomanyrequestsex.
+        MESSAGE 'Too many requests - rate limit exceeded.' TYPE 'E'.
     ENDTRY.
     " snippet-end:[s3c.abapv1.get_job_tagging]
   ENDMETHOD.
@@ -340,18 +320,14 @@ CLASS /AWSEX/CL_S3C_ACTIONS IMPLEMENTATION.
           iv_jobid = iv_job_id
           it_tags = it_tags ).
         MESSAGE |Additional tags were added to job { iv_job_id }| TYPE 'I'.
-      CATCH /aws1/cx_s3cinternalserviceex INTO DATA(lo_internal).
-        DATA(lv_error) = lo_internal->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3cnotfoundexception INTO DATA(lo_not_found).
-        lv_error = lo_not_found->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3ctoomanyrequestsex INTO DATA(lo_too_many).
-        lv_error = lo_too_many->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3ctoomanytagsex INTO DATA(lo_too_many_tags).
-        lv_error = lo_too_many_tags->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
+      CATCH /aws1/cx_s3cinternalserviceex.
+        MESSAGE 'Internal service error occurred.' TYPE 'E'.
+      CATCH /aws1/cx_s3cnotfoundexception.
+        MESSAGE 'Job not found.' TYPE 'E'.
+      CATCH /aws1/cx_s3ctoomanyrequestsex.
+        MESSAGE 'Too many requests - rate limit exceeded.' TYPE 'E'.
+      CATCH /aws1/cx_s3ctoomanytagsex.
+        MESSAGE 'Too many tags - maximum tag limit exceeded.' TYPE 'E'.
     ENDTRY.
     " snippet-end:[s3c.abapv1.put_job_tagging]
   ENDMETHOD.
@@ -379,15 +355,12 @@ CLASS /AWSEX/CL_S3C_ACTIONS IMPLEMENTATION.
         IF lt_jobs IS INITIAL.
           MESSAGE 'No jobs found' TYPE 'I'.
         ENDIF.
-      CATCH /aws1/cx_s3cinternalserviceex INTO DATA(lo_internal).
-        DATA(lv_error) = lo_internal->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3cinvalidnexttokenex INTO DATA(lo_invalid_token).
-        lv_error = lo_invalid_token->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3cinvalidrequestex INTO DATA(lo_invalid_req).
-        lv_error = lo_invalid_req->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
+      CATCH /aws1/cx_s3cinternalserviceex.
+        MESSAGE 'Internal service error occurred.' TYPE 'E'.
+      CATCH /aws1/cx_s3cinvalidnexttokenex.
+        MESSAGE 'Invalid next token provided.' TYPE 'E'.
+      CATCH /aws1/cx_s3cinvalidrequestex.
+        MESSAGE 'Invalid request parameters.' TYPE 'E'.
     ENDTRY.
     " snippet-end:[s3c.abapv1.list_jobs]
   ENDMETHOD.
@@ -405,15 +378,12 @@ CLASS /AWSEX/CL_S3C_ACTIONS IMPLEMENTATION.
           iv_accountid = iv_account_id
           iv_jobid = iv_job_id ).
         MESSAGE |Successfully deleted tagging for job { iv_job_id }| TYPE 'I'.
-      CATCH /aws1/cx_s3cinternalserviceex INTO DATA(lo_internal).
-        DATA(lv_error) = lo_internal->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3cnotfoundexception INTO DATA(lo_not_found).
-        lv_error = lo_not_found->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
-      CATCH /aws1/cx_s3ctoomanyrequestsex INTO DATA(lo_too_many).
-        lv_error = lo_too_many->get_message( )->get_text( ).
-        MESSAGE lv_error TYPE 'E'.
+      CATCH /aws1/cx_s3cinternalserviceex.
+        MESSAGE 'Internal service error occurred.' TYPE 'E'.
+      CATCH /aws1/cx_s3cnotfoundexception.
+        MESSAGE 'Job not found.' TYPE 'E'.
+      CATCH /aws1/cx_s3ctoomanyrequestsex.
+        MESSAGE 'Too many requests - rate limit exceeded.' TYPE 'E'.
     ENDTRY.
     " snippet-end:[s3c.abapv1.delete_job_tagging]
   ENDMETHOD.
