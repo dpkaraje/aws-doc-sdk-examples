@@ -11,8 +11,9 @@ CLASS ltc_awsex_cl_s3c_actions DEFINITION FOR TESTING DURATION LONG RISK LEVEL D
     CLASS-DATA av_account_id TYPE /aws1/s3caccountid.
     CLASS-DATA av_bucket_name TYPE /aws1/s3_bucketname.
     CLASS-DATA av_role_arn TYPE /aws1/s3ciamrolearn.
-    CLASS-DATA av_role_name TYPE /aws1/iamrolename.
+    CLASS-DATA av_role_name TYPE /aws1/iamrolenametype.
     CLASS-DATA av_policy_arn TYPE /aws1/iamarntype.
+    CLASS-DATA av_policy_name TYPE /aws1/iampolicynametype.
     CLASS-DATA av_manifest_location TYPE string.
     CLASS-DATA av_job_id TYPE /aws1/s3cjobid.
     CLASS-DATA av_job_id_for_priority TYPE /aws1/s3cjobid.
@@ -182,8 +183,9 @@ CLASS ltc_awsex_cl_s3c_actions IMPLEMENTATION.
     ENDTRY.
     
     DATA(lv_policy_name) = |S3BatchPol{ lv_policy_uuid(18) }|.
+    av_policy_name = lv_policy_name.
     DATA(lo_policy) = ao_iam->createpolicy(
-      iv_policyname = CONV /aws1/iampolicyname( lv_policy_name )
+      iv_policyname = av_policy_name
       iv_policydocument = lv_policy_doc
       iv_description = 'Policy for S3 Batch Operations test' ).
     av_policy_arn = lo_policy->get_policy( )->get_arn( ).
