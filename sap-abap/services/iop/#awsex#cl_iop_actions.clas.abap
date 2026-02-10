@@ -7,7 +7,7 @@ CLASS /awsex/cl_iop_actions DEFINITION
   CREATE PUBLIC .
 
   PUBLIC SECTION.
-    METHODS get_thing_shadow
+    METHODS GET_THING_SHADOW
       IMPORTING
         !iv_thing_name TYPE /aws1/iopthingname
       RETURNING
@@ -22,7 +22,7 @@ ENDCLASS.
 
 CLASS /AWSEX/CL_IOP_ACTIONS IMPLEMENTATION.
 
-  METHOD get_thing_shadow.
+  METHOD GET_THING_SHADOW.
     CONSTANTS cv_pfl TYPE /aws1/rt_profile_id VALUE 'ZCODE_DEMO'.
     DATA(lo_session) = /aws1/cl_rt_session_aws=>create( cv_pfl ).
     DATA(lo_iop) = /aws1/cl_iop_factory=>create( lo_session ).
