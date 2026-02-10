@@ -17,7 +17,10 @@ CLASS /awsex/cl_iod_actions IMPLEMENTATION.
     DATA(lo_iod) = /aws1/cl_iod_factory=>create( lo_session ).
     " snippet-start:[iod.abapv1.get_thing_shadow]
     TRY.
-        oo_result = lo_iod->getthingshadow( iv_thingname = iv_thing_name iv_shadowname = iv_shadow_name ).
+        oo_result = lo_iod->getthingshadow(
+          iv_thingname = iv_thing_name
+          iv_shadowname = iv_shadow_name
+        ).
         MESSAGE 'Retrieved thing shadow successfully.' TYPE 'I'.
       CATCH /aws1/cx_iodresourcenotfound.
         MESSAGE 'Thing or shadow not found.' TYPE 'E'.
