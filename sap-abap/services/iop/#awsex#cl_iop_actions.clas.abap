@@ -8,11 +8,11 @@ CLASS /awsex/cl_iop_actions DEFINITION
 
   PUBLIC SECTION.
 
-    METHODS get_thing_shadow
+    METHODS GET_THING_SHADOW
       IMPORTING
-        !iv_thing_name        TYPE /aws1/iopthingname
+        !IV_THING_NAME        TYPE /aws1/iopthingname
       RETURNING
-        VALUE(oo_result)      TYPE REF TO /aws1/cl_iopgetthingshadowrsp
+        VALUE(OO_RESULT)      TYPE REF TO /aws1/cl_iopgetthingshadowrsp
       RAISING
         /aws1/cx_rt_generic .
   PROTECTED SECTION.
@@ -24,7 +24,7 @@ ENDCLASS.
 CLASS /AWSEX/CL_IOP_ACTIONS IMPLEMENTATION.
 
 
-  METHOD get_thing_shadow.
+  METHOD GET_THING_SHADOW.
 
     CONSTANTS cv_pfl TYPE /aws1/rt_profile_id VALUE 'ZCODE_DEMO'.
 
@@ -33,7 +33,7 @@ CLASS /AWSEX/CL_IOP_ACTIONS IMPLEMENTATION.
 
     " snippet-start:[iop.abapv1.get_thing_shadow]
     TRY.
-        oo_result = lo_iop->getthingshadow( iv_thingname = iv_thing_name ).
+        OO_RESULT = lo_iop->getthingshadow( iv_thingname = IV_THING_NAME ).
         MESSAGE 'Retrieved thing shadow successfully.' TYPE 'I'.
       CATCH /aws1/cx_iopresourcenotfoundex.
         MESSAGE 'Thing shadow not found.' TYPE 'I'.
