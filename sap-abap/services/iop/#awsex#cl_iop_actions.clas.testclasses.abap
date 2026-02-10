@@ -14,6 +14,7 @@ CLASS ltc_awsex_cl_iop_actions DEFINITION FOR TESTING DURATION SHORT RISK LEVEL 
     CLASS-METHODS class_setup RAISING /aws1/cx_rt_generic.
 
     METHODS getthingshadow FOR TESTING RAISING /aws1/cx_rt_generic.
+
 ENDCLASS.
 
 CLASS ltc_awsex_cl_iop_actions IMPLEMENTATION.
@@ -34,4 +35,5 @@ CLASS ltc_awsex_cl_iop_actions IMPLEMENTATION.
         MESSAGE 'Test thing not found - test passed' TYPE 'I'.
     ENDTRY.
   ENDMETHOD.
+
 ENDCLASS.
