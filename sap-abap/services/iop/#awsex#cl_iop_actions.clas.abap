@@ -18,8 +18,6 @@ CLASS /awsex/cl_iop_actions DEFINITION
 
 ENDCLASS.
 
-
-
 CLASS /awsex/cl_iop_actions IMPLEMENTATION.
 
 
