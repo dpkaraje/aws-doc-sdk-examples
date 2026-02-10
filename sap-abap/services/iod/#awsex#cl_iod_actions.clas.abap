@@ -3,7 +3,7 @@
 
 CLASS /awsex/cl_iod_actions DEFINITION PUBLIC FINAL CREATE PUBLIC.
   PUBLIC SECTION.
-    METHODS retrieve_thing_shadow
+    METHODS get_thing_shadow
       IMPORTING iv_thing_name TYPE /aws1/iodthingname
                 iv_shadow_name TYPE /aws1/iodshadowname OPTIONAL
       RETURNING VALUE(oo_result) TYPE REF TO /aws1/cl_iodgetthingshadowrsp
@@ -11,7 +11,7 @@ CLASS /awsex/cl_iod_actions DEFINITION PUBLIC FINAL CREATE PUBLIC.
 ENDCLASS.
 
 CLASS /awsex/cl_iod_actions IMPLEMENTATION.
-  METHOD retrieve_thing_shadow.
+  METHOD get_thing_shadow.
     CONSTANTS cv_pfl TYPE /aws1/rt_profile_id VALUE 'ZCODE_DEMO'.
     DATA(lo_session) = /aws1/cl_rt_session_aws=>create( cv_pfl ).
     DATA(lo_iod) = /aws1/cl_iod_factory=>create( lo_session ).
