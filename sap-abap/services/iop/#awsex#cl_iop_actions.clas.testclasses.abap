@@ -15,12 +15,11 @@ CLASS ltc_iop_actions IMPLEMENTATION.
   METHOD class_setup.
     ao_iop_actions = NEW /awsex/cl_iop_actions( ).
   ENDMETHOD.
-  
+
   METHOD get_thing_shadow.
-    " Example thing name - replace with actual thing name in test environment
     DATA lv_thing_name TYPE /aws1/iopthingname VALUE 'test-thing'.
     DATA lo_result TYPE REF TO /aws1/cl_iopgetthingshadowrsp.
-    
+
     TRY.
         ao_iop_actions->get_thing_shadow(
           EXPORTING iv_thing_name = lv_thing_name
@@ -28,7 +27,6 @@ CLASS ltc_iop_actions IMPLEMENTATION.
         ).
         cl_abap_unit_assert=>assert_bound( act = lo_result msg = 'Result should be returned' ).
       CATCH /aws1/cx_iopresourcenotfoundex.
-        " Expected if thing doesn't exist in test environment
         MESSAGE 'Test thing not found - test passed (method callable)' TYPE 'I'.
     ENDTRY.
   ENDMETHOD.
