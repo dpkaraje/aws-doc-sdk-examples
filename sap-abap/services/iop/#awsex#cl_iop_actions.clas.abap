@@ -19,7 +19,6 @@ CLASS /awsex/cl_iop_actions DEFINITION
 ENDCLASS.
 
 CLASS /awsex/cl_iop_actions IMPLEMENTATION.
-
   METHOD get_thing_shadow.
     CONSTANTS cv_pfl TYPE /aws1/rt_profile_id VALUE 'ZCODE_DEMO'.
     DATA(lo_session) = /aws1/cl_rt_session_aws=>create( cv_pfl ).

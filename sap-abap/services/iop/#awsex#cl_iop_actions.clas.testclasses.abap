@@ -30,4 +30,3 @@ CLASS ltc_iop_actions IMPLEMENTATION.
     ENDTRY.
   ENDMETHOD.
 ENDCLASS.
-
