@@ -31,22 +31,8 @@ CLASS /AWSEX/CL_IOP_ACTIONS IMPLEMENTATION.
     DATA(lo_iop) = /aws1/cl_iop_factory=>create( lo_session ).
 
     " snippet-start:[iop.abapv1.get_thing_shadow]
-    TRY.
-        oo_result = lo_iop->getthingshadow( iv_thingname = iv_thing_name ).
-        MESSAGE 'Retrieved thing shadow successfully.' TYPE 'I'.
-      CATCH /aws1/cx_iopresourcenotfoundex.
-        MESSAGE 'Thing shadow not found.' TYPE 'I'.
-      CATCH /aws1/cx_iopinternalfailureex.
-        MESSAGE 'Internal service error occurred.' TYPE 'I'.
-      CATCH /aws1/cx_iopinvalidrequestex.
-        MESSAGE 'Invalid request parameters.' TYPE 'I'.
-      CATCH /aws1/cx_iopthrottlingex.
-        MESSAGE 'Request throttled - rate limit exceeded.' TYPE 'I'.
-      CATCH /aws1/cx_iopunauthorizedex.
-        MESSAGE 'Unauthorized access.' TYPE 'I'.
-      CATCH /aws1/cx_iopserviceunavailex.
-        MESSAGE 'Service temporarily unavailable.' TYPE 'I'.
-    ENDTRY.
+    oo_result = lo_iop->getthingshadow( iv_thingname = iv_thing_name ).
+    MESSAGE 'Retrieved thing shadow successfully.' TYPE 'I'.
     " snippet-end:[iop.abapv1.get_thing_shadow]
 
   ENDMETHOD.
