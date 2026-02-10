@@ -7,10 +7,13 @@ CLASS /awsex/cl_iop_actions DEFINITION
 
   PUBLIC SECTION.
 
-    METHODS GET_THING_SHADOW
-      IMPORTING !iv_thing_name TYPE /aws1/iopthingname
-      RETURNING VALUE(oo_result) TYPE REF TO /aws1/cl_iopgetthingshadowrsp
-      RAISING /aws1/cx_rt_generic.
+    METHODS get_thing_shadow
+      IMPORTING
+        !iv_thing_name   TYPE /aws1/iopthingname
+      RETURNING
+        VALUE(oo_result) TYPE REF TO /aws1/cl_iopgetthingshadowrsp
+      RAISING
+        /aws1/cx_rt_generic .
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -19,8 +22,7 @@ ENDCLASS.
 
 CLASS /awsex/cl_iop_actions IMPLEMENTATION.
 
-
-  METHOD GET_THING_SHADOW.
+  METHOD get_thing_shadow.
 
     CONSTANTS cv_pfl TYPE /aws1/rt_profile_id VALUE 'ZCODE_DEMO'.
 
