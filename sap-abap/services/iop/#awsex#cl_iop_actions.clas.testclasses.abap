@@ -26,7 +26,7 @@ CLASS ltc_awsex_cl_iop_actions IMPLEMENTATION.
     DATA lv_thing_name TYPE /aws1/iopthingname VALUE 'test-thing'.
 
     TRY.
-        DATA(lo_result) = ao_iop_actions->get_thing_shadow( lv_thing_name ).
+        DATA(lo_result) = ao_iop_actions->get_thing_shadow( iv_thing_name = lv_thing_name ).
         cl_abap_unit_assert=>assert_bound(
           act = lo_result
           msg = 'Result should be returned' ).
