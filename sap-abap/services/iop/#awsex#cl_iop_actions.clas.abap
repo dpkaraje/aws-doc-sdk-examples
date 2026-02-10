@@ -19,7 +19,7 @@ CLASS /awsex/cl_iop_actions DEFINITION
 
 ENDCLASS.
 
-CLASS /awsex/cl_iop_actions IMPLEMENTATION.
+CLASS /AWSEX/CL_IOP_ACTIONS IMPLEMENTATION.
 
 
   METHOD get_thing_shadow.
