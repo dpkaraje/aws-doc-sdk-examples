@@ -18,8 +18,9 @@ CLASS /awsex/cl_iop_actions DEFINITION
 
 ENDCLASS.
 
-CLASS /awsex/cl_iop_actions IMPLEMENTATION.
 
+
+CLASS /awsex/cl_iop_actions IMPLEMENTATION.
 
   METHOD get_thing_shadow.
     CONSTANTS cv_pfl TYPE /aws1/rt_profile_id VALUE 'ZCODE_DEMO'.
@@ -44,6 +45,7 @@ CLASS /awsex/cl_iop_actions IMPLEMENTATION.
         MESSAGE 'Service temporarily unavailable.' TYPE 'E'.
     ENDTRY.
     " snippet-end:[iop.abapv1.get_thing_shadow]
+
   ENDMETHOD.
 
 ENDCLASS.
