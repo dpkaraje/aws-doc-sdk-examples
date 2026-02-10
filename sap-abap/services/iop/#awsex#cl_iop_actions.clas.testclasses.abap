@@ -8,7 +8,8 @@ ENDCLASS.
 
 CLASS ltc_iop_actions IMPLEMENTATION.
   METHOD dummy_test.
-    " Placeholder test
+    " Placeholder test for empty stub class
     cl_abap_unit_assert=>assert_true( act = abap_true ).
   ENDMETHOD.
 ENDCLASS.
+
