@@ -5,7 +5,7 @@ CLASS /awsex/cl_iop_actions DEFINITION
   FINAL
   CREATE PUBLIC .
   PUBLIC SECTION.
-    METHODS get_thing_shadow
+    METHODS getthingshadow
       IMPORTING !iv_thing_name TYPE /aws1/iopthingname
       RETURNING VALUE(oo_result) TYPE REF TO /aws1/cl_iopgetthingshadowrsp
       RAISING /aws1/cx_rt_generic .
@@ -14,11 +14,11 @@ CLASS /awsex/cl_iop_actions DEFINITION
 ENDCLASS.
 
 CLASS /awsex/cl_iop_actions IMPLEMENTATION.
-  METHOD get_thing_shadow.
+  METHOD getthingshadow.
     CONSTANTS cv_pfl TYPE /aws1/rt_profile_id VALUE 'ZCODE_DEMO'.
     DATA(lo_session) = /aws1/cl_rt_session_aws=>create( cv_pfl ).
     DATA(lo_iop) = /aws1/cl_iop_factory=>create( lo_session ).
-    " snippet-start:[iop.abapv1.get_thing_shadow]
+    " snippet-start:[iop.abapv1.getthingshadow]
     TRY.
         oo_result = lo_iop->getthingshadow( iv_thingname = iv_thing_name ).
         MESSAGE 'Retrieved thing shadow successfully.' TYPE 'I'.
@@ -35,6 +35,6 @@ CLASS /awsex/cl_iop_actions IMPLEMENTATION.
       CATCH /aws1/cx_iopserviceunavailex.
         MESSAGE 'Service temporarily unavailable.' TYPE 'E'.
     ENDTRY.
-    " snippet-end:[iop.abapv1.get_thing_shadow]
+    " snippet-end:[iop.abapv1.getthingshadow]
   ENDMETHOD.
 ENDCLASS.
