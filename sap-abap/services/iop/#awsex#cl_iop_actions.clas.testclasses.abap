@@ -8,7 +8,7 @@ CLASS ltc_iop_actions DEFINITION FINAL FOR TESTING DURATION SHORT RISK LEVEL HAR
   PRIVATE SECTION.
     CLASS-DATA ao_iop_actions TYPE REF TO /awsex/cl_iop_actions.
     CLASS-METHODS class_setup RAISING /aws1/cx_rt_generic.
-    METHODS test_get_thing_shadow FOR TESTING RAISING /aws1/cx_rt_generic.
+    METHODS get_thing_shadow FOR TESTING RAISING /aws1/cx_rt_generic.
 ENDCLASS.
 
 CLASS ltc_iop_actions IMPLEMENTATION.
@@ -16,7 +16,7 @@ CLASS ltc_iop_actions IMPLEMENTATION.
     ao_iop_actions = NEW /awsex/cl_iop_actions( ).
   ENDMETHOD.
   
-  METHOD test_get_thing_shadow.
+  METHOD get_thing_shadow.
     " Example thing name - replace with actual thing name in test environment
     DATA lv_thing_name TYPE /aws1/iopthingname VALUE 'test-thing'.
     DATA lo_result TYPE REF TO /aws1/cl_iopgetthingshadowrsp.
