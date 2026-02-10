@@ -17,10 +17,11 @@ ENDCLASS.
 
 
 
-CLASS /AWSEX/CL_IOP_ACTIONS IMPLEMENTATION.
+CLASS /awsex/cl_iop_actions IMPLEMENTATION.
 
 
   METHOD GET_THING_SHADOW.
+
     CONSTANTS cv_pfl TYPE /aws1/rt_profile_id VALUE 'ZCODE_DEMO'.
 
     DATA(lo_session) = /aws1/cl_rt_session_aws=>create( cv_pfl ).
@@ -44,5 +45,7 @@ CLASS /AWSEX/CL_IOP_ACTIONS IMPLEMENTATION.
         MESSAGE 'Service temporarily unavailable.' TYPE 'E'.
     ENDTRY.
     " snippet-end:[iop.abapv1.get_thing_shadow]
+
   ENDMETHOD.
+
 ENDCLASS.
