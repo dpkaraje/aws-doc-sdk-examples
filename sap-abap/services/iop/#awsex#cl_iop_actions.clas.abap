@@ -10,12 +10,10 @@ CLASS /awsex/cl_iop_actions DEFINITION
 
     METHODS GET_THING_SHADOW
       IMPORTING
-        !iv_thing_name TYPE /aws1/iopthingname
-      RETURNING
-        VALUE(oo_result) TYPE REF TO /aws1/cl_iopgetthingshadowrsp
-      RAISING
-        /aws1/cx_rt_generic.
-
+                !iv_thing_name TYPE /aws1/iopthingname
+      EXPORTING
+                !oo_result     TYPE REF TO /aws1/cl_iopgetthingshadowrsp
+      RAISING   /aws1/cx_rt_generic.
   PROTECTED SECTION.
   PRIVATE SECTION.
 
